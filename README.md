@@ -14,7 +14,7 @@ Include in your plugins file
 
 Set this up in your vim config above usage of `glob#ignore('files')`.
 
-```
+```vim
 let g:glob_ignore = {
   \ "shared": [
   \   "node_modules/**",
@@ -31,4 +31,6 @@ let g:glob_ignore = {
 
 Then append `glob#ignore('files')` to your ripgrep command. For example, in your vim config
 
-    let g:ackprg = "rg --vimgrep --smart-case " . glob#ignore('global')
+```vim
+let g:ackprg = "rg --vimgrep --smart-case " . glob#ignore('global')
+```
