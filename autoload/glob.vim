@@ -2,17 +2,19 @@ if !exists("g:glob_ignore")
   let g:glob_ignore = {}
 endif
 
-function! BuildGlob(type)
-  let str = ""
+function! glob#ignore(type)
+  let l:str = ""
   if has_key(g:glob_ignore, "shared")
     for dir in g:glob_ignore["shared"]
-      str = str . " --glob \"!" . dir . "\""
+      let l:str .= " --glob \"!" . dir . "\""
     endfor
   endif
 
   if has_key(g:glob_ignore, a:type)
-    for dir in g:glob_ignore["shared"]
-      str = str . " --glob \"!" . dir . "\""
+    for dir in g:glob_ignore[a:type]
+      let l:str .= " --glob \"!" . dir . "\""
     endfor
   endif
+
+  return str
 endfunction
